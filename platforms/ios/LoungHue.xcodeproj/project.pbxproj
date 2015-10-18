@@ -40,6 +40,7 @@
 		7E7966E71810823500FA85AD /* icon-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DD1810823500FA85AD /* icon-small@2x.png */; };
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
 		6121CFE55A3E4B7A94949D82 /* Insomnia.m in Sources */ = {isa = PBXBuildFile; fileRef = 228935F8C2064F21A9350B90 /* Insomnia.m */; };
+		034AE4D617CF4DD2AEF06BB8 /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 9200AAC8907A4CA6BAC7B341 /* CDVDevice.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,8 @@
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "LoungHue/config.xml"; sourceTree = "<group>"; };
 		228935F8C2064F21A9350B90 /* Insomnia.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Insomnia.m"; path = "nl.x-services.plugins.insomnia/Insomnia.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		9ADEBEBA4CEC4D1B92243236 /* Insomnia.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Insomnia.h"; path = "nl.x-services.plugins.insomnia/Insomnia.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		9200AAC8907A4CA6BAC7B341 /* CDVDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVDevice.m"; path = "cordova-plugin-device/CDVDevice.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		77E941118FB24537A86DF980 /* CDVDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVDevice.h"; path = "cordova-plugin-device/CDVDevice.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +210,8 @@
 			children = (
 				228935F8C2064F21A9350B90 /* Insomnia.m */,
 				9ADEBEBA4CEC4D1B92243236 /* Insomnia.h */,
+				9200AAC8907A4CA6BAC7B341 /* CDVDevice.m */,
+				77E941118FB24537A86DF980 /* CDVDevice.h */,
 			);
 			name = Plugins;
 			path = "LoungHue/Plugins";
@@ -392,6 +397,7 @@
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
 				6121CFE55A3E4B7A94949D82 /* Insomnia.m in Sources */,
+				034AE4D617CF4DD2AEF06BB8 /* CDVDevice.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

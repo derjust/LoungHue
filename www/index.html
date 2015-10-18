@@ -6,8 +6,6 @@
         <meta name="description" content="">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
-
-
         <!--
         Customize this policy to fit your own app's needs. For more guidance, see:
             https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
@@ -17,9 +15,10 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'unsafe-inline' 'self' data: gap: https://ssl.gstatic.com http://www.google-analytics.com https://www.meethue.com/api/nupnp 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; connect-src *">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'unsafe-inline' 'self' data: gap: https://ssl.gstatic.com http://www.google-analytics.com https://www.meethue.com/api/nupnp; style-src 'self' 'unsafe-inline'; media-src 'self'; connect-src *">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
+            
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
 
         <!--
@@ -27,16 +26,23 @@
         -->
         <meta http-equiv="cleartype" content="on">
 
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/touch/apple-touch-icon-144x144-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/touch/apple-touch-icon-114x114-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/touch/apple-touch-icon-72x72-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" href="img/touch/apple-touch-icon-57x57-precomposed.png">
-        <link rel="shortcut icon" sizes="196x196" href="img/touch/touch-icon-196x196.png">
-        <link rel="shortcut icon" href="img/touch/apple-touch-icon.png">
-
-        <!-- Tile icon for Win8 (144x144 + tile color) -->
-        <meta name="msapplication-TileImage" content="img/touch/apple-touch-icon-144x144-precomposed.png">
-        <meta name="msapplication-TileColor" content="#222222">
+        <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/web/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="img/favicon/web/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/web/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="img/favicon/web/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/web/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="img/favicon/web/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/web/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="img/favicon/web/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/web/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="img/favicon/web/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/web/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="img/favicon/web/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/web/favicon-16x16.png">
+        <link rel="manifest" href="img/favicon/web/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="img/favicon/web/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
 
         <!-- Add to homescreen for Chrome on Android -->
         <meta name="mobile-web-app-capable" content="yes">
@@ -61,13 +67,12 @@
  
         <div data-role="header" data-position="fixed">
             <h1>LoungHue </h1>
-                        <div id="deviceready" class="blink ui-btn-left">
-<a class="event listening ui-btn ui-icon-alert ui-btn-icon-notext ui-corner-all" href="#" data-role="button" data-mini="true">Device not connected</a>
-<a class="event received ui-btn ui-icon-phone ui-btn-icon-notext ui-corner-all"  href="#" data-role="button" data-mini="true" style="display:none;">Device connected</a>
+                        <div class="blink ui-btn-left">
+<a id="deviceready" class="ui-btn notconnected ui-icon-phone ui-btn-icon-notext ui-corner-all"  href="#" data-role="button" data-mini="true">Device connection</a>
 </div>
     <div class="ui-btn-right">
 <a href="#searchBridgeDialog" data-rel="popup" data-role="button" data-icon="search">Find</a>
-<a href="#" id="reconnectBridgeButton" class="ui-disabled ui-btn ui-icon-check ui-btn-icon-notext ui-corner-all" data-role="button" data-mini="true">Connected</a>
+<a href="#" id="reconnectBridgeButton" class="notconnected ui-btn ui-icon-hue-bridge ui-btn-icon-notext ui-corner-all" data-role="button" data-mini="true">Connected</a>
 </div>
 
         </div><!-- /header -->
@@ -79,7 +84,7 @@
  
 
 
-<div data-role="popup" data-dismissible="false" data-position-to="window" id="searchBridgeDialog" style="width:17em" class="ui-corner-all ui-popup ui-body-a ui-overlay-shadow">
+<div data-role="popup" data-dismissible="false" data-position-to="window" data-history="false" id="searchBridgeDialog" style="width:17em" class="ui-corner-all ui-popup ui-body-a ui-overlay-shadow">
         <div data-role="header" role="banner"><h1>Find Bridge</h1>
 
 <a class="event listening ui-btn ui-icon-delete ui-btn-right ui-btn-icon-notext ui-corner-all" data-role="button" data-mini="true" href="#" data-rel="back">Close</a>
@@ -108,11 +113,16 @@
         </div><!-- /content -->
  
 
-        <div data-role="footer" data-position="fixed">
-            
-            <a id="startShow" href="#" data-transition="pop" data-role="button"  data-theme="b" data-icon="check">Start</a>
-
-            <a id="stopShow" class="ui-btn-right" href="#" data-transition="pop" data-role="button"  data-icon="delete">Stop</a>
+        <div data-role="footer" class="ui-grid-b" data-position="fixed" style="text-align: center;">
+            <div class="ui-block-a">
+                <a id="stopShowButton" class="interactionButton ui-disabled" href="#" data-role="button"  data-icon="delete">Stop</a>
+            </div>
+            <div class="ui-block-b">
+                <a id="flashButton" class="interactionButton ui-disabled " href="#" data-role="button"  data-icon="star">Flash</a>
+            </div>
+            <div class="ui-block-c">
+                <a id="startShowButton" class="interactionButton ui-disabled" href="#" data-transition="pop" data-role="button"  data-theme="b" data-icon="check">Start</a>
+            </div>
         </div><!-- /footer -->
     </div>
 
@@ -123,7 +133,7 @@
         <script src="js/vendor/jquery.mobile-1.4.5.min.js"></script>
         <script src="js/vendor/jquery.color.plus-names-2.1.2.min.js"></script>
         <script src="js/vendor/js.cookie-2.0.3.js"></script>
-        <script src="js/vendor/jshue-0.2.0.js"></script>
+        <script src="js/vendor/jshue-0.3.0.js"></script>
 
         <script src="js/helper.js"></script>
         <script src="cordova.js"></script>

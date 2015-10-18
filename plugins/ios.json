@@ -11,6 +11,10 @@
                         {
                             "xml": "<feature name=\"Insomnia\"><param name=\"ios-package\" value=\"Insomnia\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -24,17 +28,25 @@
                         }
                     ]
                 }
+            },
+            "framework": {
+                "parents": {
+                    "CoreGraphics.framework": []
+                }
             }
         }
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "io.github.derjust.lounghue"
-        },
         "nl.x-services.plugins.insomnia": {
             "PACKAGE_NAME": "io.github.derjust.lounghue"
         },
         "cordova-plugin-transport-security": {
+            "PACKAGE_NAME": "io.github.derjust.lounghue"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "io.github.derjust.lounghue"
+        },
+        "cordova-plugin-device": {
             "PACKAGE_NAME": "io.github.derjust.lounghue"
         }
     },

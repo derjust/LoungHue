@@ -9,11 +9,15 @@
                 "parents": {
                     "/*": [
                         {
+                            "xml": "<feature name=\"Insomnia\"><param name=\"android-package\" value=\"nl.xservices.plugins.Insomnia\" /></feature>",
+                            "count": 1
+                        },
+                        {
                             "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Insomnia\"><param name=\"android-package\" value=\"nl.xservices.plugins.Insomnia\" /></feature>",
+                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -22,13 +26,16 @@
         }
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "io.github.derjust.lounghue"
-        },
         "nl.x-services.plugins.insomnia": {
             "PACKAGE_NAME": "io.github.derjust.lounghue"
         },
         "cordova-plugin-transport-security": {
+            "PACKAGE_NAME": "io.github.derjust.lounghue"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "io.github.derjust.lounghue"
+        },
+        "cordova-plugin-device": {
             "PACKAGE_NAME": "io.github.derjust.lounghue"
         }
     },
