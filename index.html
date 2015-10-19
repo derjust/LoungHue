@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <title>LoungHue</title>
+        <meta name="description" content="">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'unsafe-inline' 'self' data: gap: https://ssl.gstatic.com http://www.google-analytics.com https://www.meethue.com/api/nupnp; style-src 'self' 'unsafe-inline'; media-src 'self'; connect-src *">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+            
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+        <!--
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+        -->
+        <meta http-equiv="cleartype" content="on">
+
+        <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/web/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="img/favicon/web/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/web/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="img/favicon/web/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/web/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="img/favicon/web/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/web/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="img/favicon/web/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/web/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="img/favicon/web/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/web/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="img/favicon/web/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/web/favicon-16x16.png">
+        <link rel="manifest" href="img/favicon/web/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="img/favicon/web/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+
+        <!-- Add to homescreen for Chrome on Android -->
+        <meta name="mobile-web-app-capable" content="yes">
+
+        <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="">
+
+        <!-- This script prevents links from opening in Mobile Safari. https://gist.github.com/1042026 -->
+        <!--
+        <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
+        -->
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+
+        <script src="js/vendor/modernizr-2.7.1.min.js"></script>
+    </head>
+    <body>
+<div data-role="page" class="app">
+ 
+        <div data-role="header" data-position="fixed">
+            <h1>LoungHue </h1>
+                        <div class="blink ui-btn-left">
+<a id="deviceready" class="ui-btn notconnected ui-icon-phone ui-btn-icon-notext ui-corner-all"  href="#" data-role="button" data-mini="true">Device connection</a>
+</div>
+    <div class="ui-btn-right">
+<a href="#searchBridgeDialog" data-rel="popup" data-role="button" data-icon="search">Find</a>
+<a href="#" id="reconnectBridgeButton" class="notconnected ui-btn ui-icon-hue-bridge ui-btn-icon-notext ui-corner-all" data-role="button" data-mini="true">Connected</a>
+</div>
+
+        </div><!-- /header -->
+ 
+
+        <div data-role="content">
+
+            <div id="room"></div>
+ 
+
+
+<div data-role="popup" data-dismissible="false" data-position-to="window" data-history="false" id="searchBridgeDialog" style="width:17em" class="ui-corner-all ui-popup ui-body-a ui-overlay-shadow">
+        <div data-role="header" role="banner"><h1>Find Bridge</h1>
+
+<a class="event listening ui-btn ui-icon-delete ui-btn-right ui-btn-icon-notext ui-corner-all" data-role="button" data-mini="true" href="#" data-rel="back">Close</a>
+        </div>
+
+            <p id="searchBridgeStatus">&nbsp;</p>
+<table data-role="table" id="searchBridgeResultTable" class="ui-responsive">
+  <thead>
+    <tr>
+      <th></th>
+      <th>IP Address</th>
+    </tr>
+  </thead>
+  <tbody>
+    </tbody>
+</table>
+        <div data-role="footer" role="banner">
+
+<a href="#" id="searchBridgeButton" data-role="button" data-icon="search">Search</a>
+<a href="#" id="connectBridgeButton" class="ui-btn-right ui-disabled" data-role="button" data-icon="check" >Connect</a>
+
+        </div>
+
+</div>
+
+        </div><!-- /content -->
+ 
+
+        <div data-role="footer" class="ui-grid-b" data-position="fixed" style="text-align: center;">
+            <div class="ui-block-a">
+                <a id="stopShowButton" class="interactionButton ui-disabled" href="#" data-role="button"  data-icon="delete">Stop</a>
+            </div>
+            <div class="ui-block-b">
+                <a id="flashButton" class="interactionButton ui-disabled " href="#" data-role="button"  data-icon="star">Flash</a>
+            </div>
+            <div class="ui-block-c">
+                <a id="startShowButton" class="interactionButton ui-disabled" href="#" data-transition="pop" data-role="button"  data-theme="b" data-icon="check">Start</a>
+            </div>
+        </div><!-- /footer -->
+    </div>
+
+
+        <!-- Add your site or application content here -->
+
+        <script src="js/vendor/jquery-2.1.0.min.js"></script>
+        <script src="js/vendor/jquery.mobile-1.4.5.min.js"></script>
+        <script src="js/vendor/jquery.color.plus-names-2.1.2.min.js"></script>
+        <script src="js/vendor/js.cookie-2.0.3.js"></script>
+        <script src="js/vendor/jshue-0.3.0.js"></script>
+
+        <script src="js/helper.js"></script>
+        <script src="cordova.js"></script>
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+    </body>
+</html>
