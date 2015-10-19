@@ -1,0 +1,40 @@
+{
+  "name": "LoungHue",
+  "description": "",
+  "version": "0.0.1",
+  "homepage": "https://github.io/derjust/LoungHue",
+  "author": {
+    "name": "Sebastian Just",
+    "url": "http://www.zeeman.de/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/derjust/LoungHue.git"
+  },
+  "bugs": {
+    "url": "https://github.com/derjust/LoungHue/issues"
+  },
+  "licenses": [
+    {
+      "type": "GPLv3",
+      "url": "http://www.gnu.org/licenses/gpl-3.0.txt"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-gh-pages": "^0.10.0"
+  },
+  "keywords": [
+    "hue",
+    "loung",
+    "color",
+    "mood",
+    "Philips Hue"
+  ]
+}

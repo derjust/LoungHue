@@ -1,0 +1,35 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"browser-package\" value=\"Device\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "io.github.derjust.lounghue"
+        },
+        "cordova-plugin-transport-security": {
+            "PACKAGE_NAME": "io.github.derjust.lounghue"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "io.github.derjust.lounghue"
+        },
+        "nl.x-services.plugins.insomnia": {
+            "PACKAGE_NAME": "io.github.derjust.lounghue"
+        }
+    },
+    "dependent_plugins": {}
+}

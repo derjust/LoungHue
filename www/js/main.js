@@ -204,18 +204,21 @@ $(function () {
     }
 
     function ggt(lights) {
-        return 2;
-        found = 1;
-        result = 1;
+        if (device.platform != "browser") {
+            return 2;
+        } else {
+            found = 1;
+            result = 1;
 
-        while (lights > result) {
-            if (lights % result == 0) {
-                found = result;
+            while (lights > result) {
+                if (lights % result == 0) {
+                    found = result;
+                }
+                result++;
             }
-            result++;
-        }
 
-        return found > 5 ? 5 : found;
+            return found > 5 ? 5 : found;
+        }
     }
   
   function modelToIcon(modelId) {
@@ -325,7 +328,7 @@ $(function () {
           textVisible: true
         });
 
-        hueBridge.createUser("LoungHue", function(successResultArray){
+        hueBridge.createUser("LoungHue#" + device.uuid, function(successResultArray){
             $.mobile.loading( "hide" );
             successResult = successResultArray[0];
             if (successResult.error) {
